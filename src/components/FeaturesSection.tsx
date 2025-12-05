@@ -1,10 +1,10 @@
-import { Car, Users, Home, Utensils, Crown, Sparkles } from "lucide-react";
+import { DoorOpen, Users, Home, Utensils, Crown, Sparkles } from "lucide-react";
 
 const features = [
   {
-    icon: Car,
-    title: "Spacious Parking",
-    description: "Ample parking space for 200+ vehicles with valet service available",
+    icon: DoorOpen,
+    title: "Grand Entry Point",
+    description: "Stunning decorated entrance to welcome your guests in style",
   },
   {
     icon: Users,
