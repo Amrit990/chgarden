@@ -1,4 +1,4 @@
-import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { Heart, Phone, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -12,26 +12,6 @@ const Footer = () => {
             <p className="font-sans text-cream/70 leading-relaxed mb-6">
               Creating unforgettable memories for weddings, celebrations, and special gatherings in Sonipat, Haryana.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-cream/20 transition-colors"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -81,7 +61,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gold flex-shrink-0" />
-                <span className="font-sans text-cream/70">+91 98XXX XXXXX</span>
+                <span className="font-sans text-cream/70">+91 8221985553</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold flex-shrink-0" />
