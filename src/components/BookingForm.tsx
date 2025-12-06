@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Phone, User, Mail, MessageSquare, CalendarDays } from "lucide-react";
+import { Calendar, Phone, User, Mail, MessageSquare, CalendarDays, CheckCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const BookingForm = () => {
@@ -17,6 +17,8 @@ const BookingForm = () => {
     guests: "",
     message: "",
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,22 +33,51 @@ const BookingForm = () => {
       return;
     }
 
-    toast({
-      title: "Enquiry Submitted!",
-      description: "We will contact you soon to discuss your event.",
-    });
-
-    // Reset form
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      eventType: "",
-      eventDate: "",
-      guests: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+    
+    // Simulate submission delay for animation
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      
+      // Reset after showing success
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          eventType: "",
+          eventDate: "",
+          guests: "",
+          message: "",
+        });
+      }, 3000);
+    }, 1000);
   };
+
+  if (isSubmitted) {
+    return (
+      <section id="booking" className="py-24 bg-gradient-cream">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="card-elegant p-12 md:p-16 text-center animate-scale-in">
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center animate-fade-in">
+                <CheckCircle className="w-12 h-12 text-green-600" />
+              </div>
+              <h3 className="font-serif text-3xl md:text-4xl text-primary mb-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                Thank You!
+              </h3>
+              <p className="font-sans text-muted-foreground text-lg animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                Your enquiry has been submitted successfully.<br />
+                We will contact you soon to discuss your event.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="booking" className="py-24 bg-gradient-cream">
@@ -198,9 +229,17 @@ const BookingForm = () => {
             <div className="mt-8 text-center">
               <Button
                 type="submit"
-                className="btn-primary rounded-full px-12 py-6 text-base"
+                disabled={isSubmitting}
+                className="btn-primary rounded-full px-12 py-6 text-base disabled:opacity-70"
               >
-                Submit Enquiry
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Submitting...
+                  </span>
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           </form>
