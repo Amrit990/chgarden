@@ -61,8 +61,7 @@ const LocationSection = () => {
                 <div>
                   <h4 className="font-sans font-semibold text-foreground mb-1">Phone</h4>
                   <p className="font-sans text-muted-foreground">
-                    +91 98XXX XXXXX<br />
-                    +91 98XXX XXXXX
+                    +91 8221985553
                   </p>
                 </div>
               </div>
@@ -99,7 +98,7 @@ const LocationSection = () => {
             {/* CTA */}
             <div className="mt-10">
               <a
-                href="tel:+919800000000"
+                href="tel:+918221985553"
                 className="btn-gold rounded-full inline-flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
