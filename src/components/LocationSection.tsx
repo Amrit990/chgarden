@@ -53,15 +53,15 @@ const LocationSection = () => {
                 </div>
               </div>
 
-              {/* Phone */}
+              {/* Business Owner */}
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-sans font-semibold text-foreground mb-1">Phone</h4>
+                  <h4 className="font-sans font-semibold text-foreground mb-1">Dinesh Adhlakha</h4>
                   <p className="font-sans text-muted-foreground">
-                    +91 8221985553
+                    +91 9729401460
                   </p>
                 </div>
               </div>
@@ -74,8 +74,7 @@ const LocationSection = () => {
                 <div>
                   <h4 className="font-sans font-semibold text-foreground mb-1">Email</h4>
                   <p className="font-sans text-muted-foreground">
-                    info@chiraggarden.com<br />
-                    bookings@chiraggarden.com
+                    dineshadhlakha007@gmail.com
                   </p>
                 </div>
               </div>
@@ -98,7 +97,7 @@ const LocationSection = () => {
             {/* CTA */}
             <div className="mt-10">
               <a
-                href="tel:+918221985553"
+                href="tel:+919729401460"
                 className="btn-gold rounded-full inline-flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
