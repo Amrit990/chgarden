@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar, Phone, User, Mail, MessageSquare, CalendarDays, CheckCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -79,12 +80,18 @@ const BookingForm = () => {
     );
   }
 
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: formRef, isVisible: formVisible } = useScrollAnimation();
+
   return (
     <section id="booking" className="py-24 bg-gradient-cream">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12">
+          <div
+            ref={headerRef}
+            className={`text-center mb-12 scroll-fade-up ${headerVisible ? 'visible' : ''}`}
+          >
             <p className="font-sans text-accent tracking-[0.2em] uppercase text-sm mb-3">
               Get In Touch
             </p>
@@ -96,7 +103,11 @@ const BookingForm = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="card-elegant p-8 md:p-12">
+          <div
+            ref={formRef}
+            className={`scroll-scale ${formVisible ? 'visible' : ''}`}
+          >
+            <form onSubmit={handleSubmit} className="card-elegant p-8 md:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <div className="space-y-2">
@@ -243,6 +254,7 @@ const BookingForm = () => {
               </Button>
             </div>
           </form>
+          </div>
         </div>
       </div>
     </section>

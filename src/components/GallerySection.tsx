@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
@@ -20,12 +21,17 @@ const galleryImages = [
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.05 });
 
   return (
     <section id="gallery" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 scroll-fade-up ${headerVisible ? 'visible' : ''}`}
+        >
           <p className="font-sans text-accent tracking-[0.2em] uppercase text-sm mb-3">
             Our Venue
           </p>
@@ -37,11 +43,11 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-lg cursor-pointer aspect-[4/3]"
+              className={`group relative overflow-hidden rounded-lg cursor-pointer aspect-[4/3] scroll-scale stagger-${index + 1} ${gridVisible ? 'visible' : ''}`}
               onClick={() => setSelectedImage(image.src)}
             >
               <img
