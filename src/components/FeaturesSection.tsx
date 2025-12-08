@@ -1,4 +1,5 @@
 import { DoorOpen, Users, Home, Utensils, Crown, Sparkles } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const features = [
   {
@@ -34,11 +35,17 @@ const features = [
 ];
 
 const FeaturesSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.05 });
+
   return (
     <section id="features" className="py-24 bg-gradient-cream">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 scroll-fade-up ${headerVisible ? 'visible' : ''}`}
+        >
           <p className="font-sans text-accent tracking-[0.2em] uppercase text-sm mb-3">
             Our Services
           </p>
@@ -50,12 +57,11 @@ const FeaturesSection = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="card-elegant group text-center"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className={`card-elegant group text-center scroll-scale stagger-${index + 1} ${gridVisible ? 'visible' : ''}`}
             >
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
                 <feature.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors duration-300" />

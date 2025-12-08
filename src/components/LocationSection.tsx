@@ -1,11 +1,19 @@
 import { MapPin, Phone, Clock, Mail } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const LocationSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: mapRef, isVisible: mapVisible } = useScrollAnimation();
+  const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation();
+
   return (
     <section id="location" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 scroll-fade-up ${headerVisible ? 'visible' : ''}`}
+        >
           <p className="font-sans text-accent tracking-[0.2em] uppercase text-sm mb-3">
             Find Us
           </p>
@@ -18,7 +26,10 @@ const LocationSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Map */}
-          <div className="rounded-lg overflow-hidden shadow-lg h-[400px] lg:h-auto">
+          <div
+            ref={mapRef}
+            className={`rounded-lg overflow-hidden shadow-lg h-[400px] lg:h-auto scroll-fade-left ${mapVisible ? 'visible' : ''}`}
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111094.17648227!2d77.0201962!3d28.9950547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390db00b8670400b%3A0x6c34f1fb02e8e76c!2sSonipat%2C%20Haryana!5e0!3m2!1sen!2sin!4v1701234567890!5m2!1sen!2sin"
               width="100%"
@@ -32,7 +43,10 @@ const LocationSection = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col justify-center">
+          <div
+            ref={infoRef}
+            className={`flex flex-col justify-center scroll-fade-right ${infoVisible ? 'visible' : ''}`}
+          >
             <h3 className="font-serif text-3xl font-semibold text-foreground mb-8">
               Contact Information
             </h3>
