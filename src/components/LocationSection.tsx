@@ -61,8 +61,9 @@ const LocationSection = () => {
                   <h4 className="font-sans font-semibold text-foreground mb-1">Address</h4>
                   <p className="font-sans text-muted-foreground">
                     Chirag Garden<br />
-                    Sonipat, Haryana - 131001<br />
-                    India
+                    Near Tehsil, Railway Road<br />
+                    Ganaur, Sonipat - 131101<br />
+                    Haryana, India
                   </p>
                 </div>
               </div>
